@@ -141,7 +141,7 @@ $(document).ready(function() {
       }
       else
       {
-          r[++j] = '<tr><td style="padding-right:5em" class=\"task word-td vert-align\">';
+          r[++j] = '<tr><td style="padding-right:2em" class=\"task word-td vert-align\">';
           r[++j] = data[key]['title'];
           r[++j] = '</td><i class="fa fa-square-o"></i></button></td><td class="vert-align days-to-task" data-value="';
           r[++j] = data[key]['date'];
@@ -279,7 +279,7 @@ $(document).ready(function() {
 
     // Inserts new row with new task item
     var newRow = $("<tr>");
-    var wordTd = $("<td>").addClass("word-td vert-align").attr("style", "padding-right:5em").append(newTask);
+    var wordTd = $("<td>").addClass("word-td vert-align").attr("style", "padding-right:2em").append(newTask);
     var completedBtn = $("<button>").addClass("unchecked btn btn-default").append('<i class="fa fa-square-o">');
     var completedTd = $("<td>").addClass("vert-align").append(completedBtn);
     var deleteTd = $("<td>").addClass("vert-align days-to-task");

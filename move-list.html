@@ -21,7 +21,7 @@ for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElemen
 mixpanel.init("7b94b65c09895490074631b2e4944c18");</script><!-- end Mixpanel -->
    
 </head>
-<body dir="rtl" align="right">
+<body dir="rtl" align="right" style="font-size:12px">
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
         <a class="navbar-brand" href="#">Checklist <i class="fa fa-check-square-o"></i></a>
@@ -34,7 +34,46 @@ mixpanel.init("7b94b65c09895490074631b2e4944c18");</script><!-- end Mixpanel -->
   </nav>
   <main class="container">
     <div class="row">
-      <div class="col-md-9">
+	
+	   <div class="col-md-3 col-sm-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">הגדר תאריך יעד</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped">
+              <tbody>
+                <tr>
+                  <form id="form">
+                    <td>
+                      <div class="form-group">
+
+					  <input  type="text" placeholder="לחץ לפתיחת לוח שנה" class="new-date" id="datepicker">
+
+					  <!-- <input type="date" id = "datepicker" class="datepicker dateselector form-control new-date" data-date-inline-picker="true"/> -->
+
+                        <!-- <input type="datetime" class="form-control new-task" placeholder="הגדר תאריך יעד"> -->
+                      </div>
+                      <div class="form-group">
+                        <button id="set-date-button" type="submit" class="btn btn-set-date btn-warning btn-block"><i id="set-date" class="fa fa-check"></i></button>
+                      </div>
+                  </td>
+                  </form>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                </tr>
+              </tfoot>
+            </table>
+            <div id="date-invalid-msg" class="alert alert-danger" role="alert">
+            <p>מבנה התאריך אינו תקין</p>
+            </div>
+          </div>
+        </div> <!-- end panel panel-primary -->
+      </div> <!-- end col-md-3 -->
+	  
+      <div class="col-md-9 col-sm-4">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3>מעבר דירה בתל אביב <i class="fa fa-check-square-o"></i></h3>
@@ -75,45 +114,6 @@ mixpanel.init("7b94b65c09895490074631b2e4944c18");</script><!-- end Mixpanel -->
         </div> <!-- panel panel-primary -->
       </div> <!-- col-md-9 -->
 	  
-	   <div class="col-md-3">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">הגדר תאריך יעד</h3>
-          </div>
-          <div class="panel-body">
-            <table class="table table-striped">
-              <tbody>
-                <tr>
-                  <form id="form">
-                    <td>
-                      <div class="form-group">
-
-					  <input  type="text" placeholder="לחץ לפתיחת לוח שנה" class="new-date" id="datepicker">
-
-					  <!-- <input type="date" id = "datepicker" class="datepicker dateselector form-control new-date" data-date-inline-picker="true"/> -->
-
-                        <!-- <input type="datetime" class="form-control new-task" placeholder="הגדר תאריך יעד"> -->
-                      </div>
-                      <div class="form-group">
-                        <button id="set-date-button" type="submit" class="btn btn-set-date btn-warning btn-block"><i id="set-date" class="fa fa-check"></i></button>
-                      </div>
-                  </td>
-                  </form>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                </tr>
-              </tfoot>
-            </table>
-            <div id="date-invalid-msg" class="alert alert-danger" role="alert">
-            <p>מבנה התאריך אינו תקין</p>
-            </div>
-          </div>
-        </div> <!-- end panel panel-primary -->
-		
-
-      </div> <!-- end col-md-3 -->
 	  
 	  
 	  
@@ -193,7 +193,7 @@ mixpanel.init("7b94b65c09895490074631b2e4944c18");</script><!-- end Mixpanel -->
   </footer> -->
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 		<script src="datepicker-he.js"></script>  
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
