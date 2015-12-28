@@ -16,14 +16,18 @@
   <link rel="stylesheet" type="text/css" href="css/styles.css">
    
 
+   <!-- start Mixpanel --><script type="text/javascript">(function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f)}})(document,window.mixpanel||[]);
+mixpanel.init("7b94b65c09895490074631b2e4944c18");</script><!-- end Mixpanel -->
+   
 </head>
 <body dir="rtl" align="right">
   <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Check <i class="fa fa-check-square-o"></i></a>
+        <a class="navbar-brand" href="#">Checklist <i class="fa fa-check-square-o"></i></a>
         <div class = "collapse navbar-collapse  navHeaderCollapse">
             <ul class = "nav navbar-nav navbar-right">
-                <li><a href ="mailto:darrylmendonez@gmail.com" class = "btn btn-email">צור קשר</a></li>
+                <li><a href ="mailto:sagimaman84@gmail.com" class = "btn btn-email">צור קשר</a></li>
             </ul>
         </div>
     </div>
@@ -33,8 +37,8 @@
       <div class="col-md-9">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3>מעבר דירה בתל אביב<i class="fa fa-check-square-o"></i></h3>
-            <h4>Get things done <i class="fa fa-check-square-o"></i></h4>
+            <h3>מעבר דירה בתל אביב <i class="fa fa-check-square-o"></i></h3>
+            <!-- <h4>Get things done <i class="fa fa-check-square-o"></i></h4> -->
             <br />
           </div> <!--panel-heading -->
           <div class="panel-body" dir="rtl" align="right">
@@ -42,7 +46,7 @@
               <thead  dir="rtl" align="right">
                 <tr id="headerRow" dir="rtl" align="right">
                   <th style="text-align:right">משימה</th>
-                  <th style="text-align:right">ימים למעבר</th>
+				  <th style="text-align:right">מתי</th>
                   <th style="text-align:right">בוצע</th>
                   
                 </tr>
@@ -84,7 +88,7 @@
                     <td>
                       <div class="form-group">
 
-					  <input  type="text" placeholder="click to show datepicker" class="new-date" id="datepicker">
+					  <input  type="text" placeholder="לחץ לפתיחת לוח שנה" class="new-date" id="datepicker">
 
 					  <!-- <input type="date" id = "datepicker" class="datepicker dateselector form-control new-date" data-date-inline-picker="true"/> -->
 
@@ -107,11 +111,13 @@
             </div>
           </div>
         </div> <!-- end panel panel-primary -->
+		
+
       </div> <!-- end col-md-3 -->
 	  
 	  
 	  
-      <div class="col-md-3">
+<!--       <div class="col-md-3">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">הוסף משימה</h3>
@@ -144,13 +150,29 @@
             <p>אנא הכנס משימה חדשה</p>
             </div>
           </div>
-        </div> <!-- end panel panel-primary -->
-      </div> <!-- end col-md-3 -->
-	  
-	  
+        </div>
+      </div> 
+	   -->
 	  
 	 
     </div> <!-- end row -->
+	
+	  
+		<div class ="container" style='background:white;' align="center">
+		  <script src='http://cdn.gigya.com/JS/gigya.js?apiKey=3_HnKxtvnHxN-b2RJeewy8_UI6RKV9OoFwaqkrJHrQ8GSoQ80Gtu2Mej5bHsDgp82Y' type='text/javascript'></script>
+			<div id='commentsDiv'></div>
+			<script type='text/javascript'>
+			var params ={
+				categoryID: 'checklist-move',
+				streamID: '',
+				version: 2,
+				containerID: 'commentsDiv',
+				cid:'',
+				enabledShareProviders: 'facebook,twitter,yahoo,linkedin'
+			}
+			gigya.comments.showCommentsUI(params);
+			</script>
+		</div>
   </main>
   <!-- <footer id ="footer" class="navbar navbar-inverse navbar-fixed-bottom">
     <div class ="container">
@@ -178,6 +200,6 @@
   <script type="text/javascript" src="js/picker.js"></script>
   <script type="text/javascript" src="js/picker.date.js"></script>
   <script type="text/javascript" src="js/picker.time.js"></script>
-  <script type="text/javascript" src="js/scripts.js"></script>
+  <script type="text/javascript" src="js/move-scripts.js"></script>
 </body>
 </html>

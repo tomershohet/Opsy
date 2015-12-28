@@ -16,8 +16,23 @@ $(document).ready(function() {
   $('#datepicker').datepicker({
       format: "dd/mm/yyyy"
   });
+  var checklistName = "move";
 
-  var checklistName = "1";
+  var userID = localStorage.getItem("user_id");
+  if (!userID) {
+      localStorage.setItem("user_id", Math.floor(Math.random() * 1000000) + 1)
+      userID = localStorage.getItem("user_id");
+  }
+  
+  mixpanel.identify(userID);
+
+    // MixPanel
+  mixpanel.register({
+      "checklist_type": checklistName
+  });
+
+  mixpanel.track("Checklist opened");
+  
   var setCheckOn = function (currButton) {
       var smileAnimation = $("<i>").addClass("fa fa-smile-o").fadeIn(750).delay(250).fadeOut(500);
       var check = $("<i>").addClass("fa fa-check-square-o").hide().delay(1500).fadeIn(1000);
@@ -26,27 +41,82 @@ $(document).ready(function() {
       $(".btn-success").parent().parent().css("success");
   }
 
-  var data = [{
-      id: "1", // Unique ID; timestamp is used here
-      title: "משימה ראשונה", // Title of the task
-      date: "5", // Due date
-      description: "description", // Description of the task
-      level: 1
-  },
-  {
-      id: "2", 
-      title: "sec", 
-      date: "6", 
-      description: "description", 
-      level: 0
-  },
-  {
-      id: "3", // Unique ID; timestamp is used here
-      title: "third", // Title of the task
-      date: "3", // Due date    
-      description: "description", // Description of the task
-      level: 1
-  }];
+  var data = [{id: '1', title: 'חתימה על חוזה', date: '30', level: 1 },
+{id: '', title: 'הזמנת הובלה', date: '', level: 0 },
+{id: '2', title: 'לבחור מוביל', date: '30', level: 1 },
+{id: '3', title: 'קנית קרטונים לאריזה (לאחד עם חומרי ניקוי וחומרי בנין)', date: '13', level: 1 },
+{id: '4', title: 'תחילת אריזת דירה', date: '10', level: 1 },
+{id: '', title: 'להזמין הדברה', date: '', level: 0 },
+{id: '5', title: 'להזמין הדברה', date: '21', level: 1 },
+{id: '', title: 'תיקונים בדירה הישנה', date: '', level: 0 },
+{id: '6', title: 'ביצוע רשימת תיקונים שיש לבצע', date: '30', level: 1 },
+{id: '7', title: 'ביצוע רשימת חומרים לקניה (צבע, שפכטל..)', date: '13', level: 1 },
+{id: '8', title: 'יש צורך בשיפוצניק? רשימה נפרדת :)', date: '', level: 1 },
+{id: '9', title: 'קנית חומרים לתיקונים', date: '13', level: 1 },
+{id: '10', title: 'ביצוע תיקונים וניקיונות בדירה הישנה', date: '1', level: 1 },
+{id: '', title: 'ניקיון דירה חדשה', date: '', level: 0 },
+{id: '11', title: 'לקנות חומרי ניקוי (יחד עם קנית חומרי הבנין)', date: '13', level: 1 },
+{id: '12', title: 'לקבוע יום ניקיון לדירה החדשה', date: '14', level: 1 },
+{id: '13', title: 'יום ניקיון', date: '4', level: 1 },
+{id: '14', title: 'ביצוע הדברה', date: '3', level: 1 },
+{id: '', title: 'העברת חשבון חשמל', date: '', level: 0 },
+{id: '15', title: 'קריאת מונה בארון חשמל דירה ישנה', date: '5', level: 1 },
+{id: '16', title: 'קריאת מונה בארון חשמל דירה חדשה', date: '5', level: 1 },
+{id: '17', title: 'העברת חשבון חשמל דירה חדשה על שמנו', date: '1', level: 1 },
+{id: '18', title: 'העברת חשבון חשמל דירה ישנה לדיירים הנכנסים', date: '1', level: 1 },
+{id: '', title: 'העברת חשבון מים', date: '', level: 0 },
+{id: '19', title: 'קריאת מונה דירה ישנה', date: '13', level: 1 },
+{id: '20', title: 'קריאת מונה דירה שניה', date: '13', level: 1 },
+{id: '21', title: 'העברת חשבון מים דירה חדשה על שמנו', date: '6', level: 1 },
+{id: '22', title: 'העברת חשבון מים דירה ישנה לדיירים הנכנסים', date: '2', level: 1 },
+{id: '', title: 'העברת ארנונה', date: '', level: 0 },
+{id: '23', title: 'לארגן מסמכים נדרשים', date: '13', level: 1 },
+{id: '24', title: 'לפנות זמן ביומן לגשת לעירייה', date: '13', level: 1 },
+{id: '25', title: 'ביצוע החלפת כתובות בעיריה', date: '6', level: 1 },
+{id: '', title: 'גז', date: '', level: 0 },
+{id: '26', title: 'ניתוק מחברת גז ישנה', date: '5', level: 1 },
+{id: '27', title: 'העברת חשבון גז דירה חדשה על שמנה', date: '5', level: 1 },
+{id: '', title: 'תקשורת', date: '', level: 0 },
+{id: '28', title: 'העברת טלפון קוי', date: '6', level: 1 },
+{id: '29', title: 'העברת Yes', date: '6', level: 1 },
+{id: '30', title: 'העברת Hot', date: '6', level: 1 },
+{id: '31', title: 'העברת אינטרנט', date: '6', level: 1 },
+{id: '', title: 'העברת כתובת במשרד הפנים', date: '', level: 0 },
+{id: '32', title: 'באינטרנט או במשרד הפנים', date: '10', level: 1 },
+{id: '', title: 'תו חניה', date: '', level: 0 },
+{id: '33', title: 'הזמנה / החלפה באינטרנט', date: '6', level: 1 },
+{id: '', title: 'עדכון כתובת חדשה', date: '', level: 0 },
+{id: '34', title: 'דואר ישראל', date: '5', level: 1 },
+{id: '35', title: 'בנקים', date: '5', level: 1 },
+{id: '36', title: 'חברות אשראי', date: '5', level: 1 },
+{id: '37', title: 'חברות ביטוח', date: '5', level: 1 },
+{id: '38', title: 'עדכון מקום העבודה ועוד....', date: '5', level: 1 },
+{id: '', title: 'מפתח לדירה', date: '', level: 0 },
+{id: '39', title: 'החלפת צילינדר או שכפול מפתח', date: '2', level: 1 },
+{id: '', title: 'לקבוע תאריך לחנוכת בית :)', date: '', level: 0 },
+{id: '40', title: 'לקבוע תאריך לחנוכת בית :)', date: '0', level: 1 } ]
+
+  //var data = [{
+  //    id: "1", // Unique ID; timestamp is used here
+  //    title: "משימה ראשונה", // Title of the task
+  //    date: "5", // Due date
+  //    description: "description", // Description of the task
+  //    level: 1
+  //},
+  //{
+  //    id: "2", 
+  //    title: "sec", 
+  //    date: "6", 
+  //    description: "description", 
+  //    level: 0
+  //},
+  //{
+  //    id: "3", // Unique ID; timestamp is used here
+  //    title: "third", // Title of the task
+  //    date: "3", // Due date    
+  //    description: "description", // Description of the task
+  //    level: 1
+  //}];
 
     //$("#datepicker").datepicker();
 
@@ -65,9 +135,9 @@ $(document).ready(function() {
   for (var key = 0, size = data.length; key < size; key++) {
 
       if (data[key].level == 0) {
-      r[++j] = '<tr><td class=\"task word-td\"><b><u>';
-      r[++j] = data[key]['title'];
-      r[++j] = '</td></b></u></tr>';
+          r[++j] = '<tr><td class=\"task word-td\" style="padding-top:1em;padding-bottom:1em"><b><u>';
+          r[++j] = data[key]['title'];
+          r[++j] = '</td></b></u><td></td><td></td></tr>';
       }
       else
       {
@@ -77,9 +147,9 @@ $(document).ready(function() {
           r[++j] = data[key]['date'];
           r[++j] = '">';
           if (targetDateString) {
-              var result = new Date();
-              result.setDate(targetDate.getDate() - data[key]['date']);
-              r[++j] = result.toLocaleDateString();
+              var result = new Date(targetDate);
+              result.setDate(result.getDate() - data[key]['date']);
+              r[++j] = result.getDate() + "/" + result.getMonth() + "/" + result.getFullYear();
           }
           else
               r[++j] = data[key]['date'];
@@ -139,14 +209,16 @@ $(document).ready(function() {
       // Run on each days cell and change it to date
       var days = $('#main-table').children('tbody').find(".days-to-task");
       for (var i = 0, size = days.length; i < size; i++) {
-          var result = new Date();
+          var result = new Date(targetDate);
+
+
 
           result.setDate(targetDate.getDate() - $(days[i]).data("value"));
-          days[i].textContent = result.toLocaleDateString();
+          days[i].textContent = result.getDate() + "/" + result.getMonth() + "/" + result.getFullYear();
       }
   }
 
-    // ADD NEW TASK
+    // Set Date
   $(".btn-set-date").on("click", function (e) {
       e.preventDefault();
       var newDate = $(".new-date").val();
@@ -162,6 +234,7 @@ $(document).ready(function() {
       };
 
       localStorage.setItem(checklistName + "_targetDate", date.getTime());
+      mixpanel.track("Target Date Set", { "date": date.toString() });
 
       changeDaysToDates(date)
 
@@ -191,20 +264,25 @@ $(document).ready(function() {
     });
     // Runs duplicate entry message
     if(isDuplicate){
-      $("#duplicate-msg").slideDown(500);
+        $("#duplicate-msg").slideDown(500);
+        mixpanel.track("Add Task Filed - Duplicated", { "title": $(".new-task").val() });
       return;
     };
     // Runs empty message
     if(newTask === ""){
-      $("#empty-msg").slideDown(500);
+        $("#empty-msg").slideDown(500);
+        mixpanel.track("Add Task Filed - Empty");
       return;
     };
+
+    mixpanel.track("Add Task Done", { "title": $(".new-task").val() });
+
     // Inserts new row with new task item
     var newRow = $("<tr>");
     var wordTd = $("<td>").addClass("word-td vert-align").attr("style", "padding-right:5em").append(newTask);
     var completedBtn = $("<button>").addClass("unchecked btn btn-default").append('<i class="fa fa-square-o">');
     var completedTd = $("<td>").addClass("vert-align").append(completedBtn);
-    var deleteTd = $("<td>").addClass("vert-align days-to-task").append("333");
+    var deleteTd = $("<td>").addClass("vert-align days-to-task");
 
     newRow.append(wordTd).append(deleteTd).append(completedTd).hide().fadeIn(2000);
     $("#task-list").append(newRow);
@@ -230,7 +308,9 @@ $(document).ready(function() {
   $("table").on("click", ".unchecked", function(){
  
       setCheckOn($(this));
+      
       // Save the task status on the local storage
+      mixpanel.track("Task Checked", { "item_id": this.value });
       localStorage.setItem(checklistName + "_task_" + this.value, JSON.stringify("{checked:true}"));
   });
 
@@ -241,6 +321,7 @@ $(document).ready(function() {
     $(this).replaceWith($("<button>").attr("type", "button").attr("value", this.value).addClass("unchecked btn btn-default btn-width").append(meh).append(uncheck));
     $(".unchecked").parent().prev().css("text-decoration", "none").css("color", "#c8c8c8");
 
+    mixpanel.track("Task Unchecked", { "item_id": this.value });
     localStorage.removeItem(checklistName + "_task_" + this.value);
 
   });
