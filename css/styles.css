@@ -248,6 +248,10 @@ fieldset[disabled] .btn-google-plus.active {
   border-color: #c53727;
 }
 
+.new-date {
+	width:100%
+}
+
 /* Email */
 .btn-email {
   color: #ffffff;

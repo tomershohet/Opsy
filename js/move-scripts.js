@@ -13,9 +13,22 @@ $(document).ready(function() {
 
     //setCalander();
 
-  $('#datepicker').datepicker({
-      format: "dd/mm/yyyy"
-  });
+	// Facebook comments
+	 $.ajaxSetup({ cache: true });
+	  $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+		FB.init({
+		  appId: '158703717489113',
+		  version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+		});     
+		$('#loginbutton,#feedbutton').removeAttr('disabled');
+		FB.getLoginStatus(updateStatusCallback);
+	  });
+	
+	
+	$(".new-date").datepicker({dateFormat: 'dd/mm/yy'});
+
+
+  
   var checklistName = "move";
 
   var userID = localStorage.getItem("user_id");
@@ -126,7 +139,7 @@ $(document).ready(function() {
   var targetDate;
   if (targetDateString) {
       targetDate = new Date(parseFloat(targetDateString));
-      $("#datepicker").val(targetDate.getMonth() + 1 + "/" + targetDate.getDate() + "/" + targetDate.getFullYear());
+      $("#datepicker").val(targetDate.getDate() + "/" + (targetDate.getMonth() + 1) + "/" + targetDate.getFullYear());
 
       //$("#datepicker").setDate(targetDate);
   }
@@ -194,8 +207,8 @@ $(document).ready(function() {
 
   var isDateValid = function (text) {
       var comp = text.split('/');
-      var m = parseInt(comp[0], 10);
-      var d = parseInt(comp[1], 10);
+      var d = parseInt(comp[0], 10);
+      var m = parseInt(comp[1], 10);
       var y = parseInt(comp[2], 10);
       var date = new Date(y, m - 1, d);
       if (!(date.getFullYear() == y && date.getMonth() + 1 == m && date.getDate() == d))
