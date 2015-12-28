@@ -14,15 +14,15 @@ $(document).ready(function() {
     //setCalander();
 
 	// Facebook comments
-	 $.ajaxSetup({ cache: true });
-	  $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
-		FB.init({
-		  appId: '158703717489113',
-		  version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
-		});     
-		$('#loginbutton,#feedbutton').removeAttr('disabled');
-		FB.getLoginStatus(updateStatusCallback);
-	  });
+	 // $.ajaxSetup({ cache: true });
+	  // $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+		// FB.init({
+		  // appId: '158703717489113',
+		  // version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+		// });     
+		// $('#loginbutton,#feedbutton').removeAttr('disabled');
+		// FB.getLoginStatus(updateStatusCallback);
+	  // });
 	
 	
 	$(".new-date").datepicker({dateFormat: 'dd/mm/yy'});
@@ -109,6 +109,42 @@ $(document).ready(function() {
 {id: '', title: 'לקבוע תאריך לחנוכת בית :)', date: '', level: 0 },
 {id: '40', title: 'לקבוע תאריך לחנוכת בית :)', date: '0', level: 1 } ]
 
+var loadCachedTasks = function () {
+
+      var jsonStr = localStorage.getItem("custom_tasks" + checklistName);
+	  var obj = JSON.parse(jsonStr);
+	  
+	  return obj;
+  }
+  
+  var addToCachedTasks = function (inputTitle) {
+
+      // Get the current tasks
+	  var currTasks = loadCachedTasks();
+	  
+	  if (!currTasks)
+		  currTasks = [];
+	  // Add the given Tasks
+	  var item = {
+        "id": 'custom_' + (Math.floor(Math.random() * 1000000) + 1),
+		"title": inputTitle,
+        "date": '0',
+		"level": 1
+    };
+	  currTasks.push(item);
+	  jsonStr = JSON.stringify(currTasks);
+	  
+	  // Save to local storage
+	 localStorage.setItem("custom_tasks" + checklistName, jsonStr);
+  }
+  
+
+ var savedCustomTasks = loadCachedTasks();
+ if (savedCustomTasks) {
+	   var data = data.concat(savedCustomTasks);
+	   //data = JSON.stringify(finalList);
+ }
+
   //var data = [{
   //    id: "1", // Unique ID; timestamp is used here
   //    title: "משימה ראשונה", // Title of the task
@@ -144,6 +180,9 @@ $(document).ready(function() {
       //$("#datepicker").setDate(targetDate);
   }
 
+  // Load the datafrom cache if any tasks added
+  
+  
   var r = new Array(), j = -1;
   for (var key = 0, size = data.length; key < size; key++) {
 
@@ -289,7 +328,8 @@ $(document).ready(function() {
     };
 
     mixpanel.track("Add Task Done", { "title": $(".new-task").val() });
-
+	addToCachedTasks($(".new-task").val())
+	
     // Inserts new row with new task item
     var newRow = $("<tr>");
     var wordTd = $("<td>").addClass("word-td vert-align").attr("style", "padding-right:2em").append(newTask);

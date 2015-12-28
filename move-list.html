@@ -44,7 +44,7 @@ mixpanel.init("7b94b65c09895490074631b2e4944c18");</script><!-- end Mixpanel -->
 	   <div class="col-md-3">
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">הגדר תאריך יעד</h3>
+            <h3 class="panel-title">הגדר תאריך מעבר</h3>
           </div>
           <div class="panel-body">
             <table class="table table-striped">
@@ -79,7 +79,9 @@ mixpanel.init("7b94b65c09895490074631b2e4944c18");</script><!-- end Mixpanel -->
         </div> <!-- end panel panel-primary -->
       </div> <!-- end col-md-3 -->
 	  
-      <div class="col-md-9 col-sm-4">
+	   
+	  
+      <div class="col-md-9">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3>מעבר דירה בתל אביב <i class="fa fa-check-square-o"></i></h3>
@@ -116,49 +118,51 @@ mixpanel.init("7b94b65c09895490074631b2e4944c18");</script><!-- end Mixpanel -->
               </tbody>
 			  --> 
             </table>
+			
+			 <div style="width:100%">
+				<div class="panel panel-primary">
+				  <div class="panel-heading">
+					<h3 class="panel-title">הוסף משימה</h3>
+				  </div>
+				  <div class="panel-body">
+					<table class="table table-striped">
+					  <tbody>
+						<tr>
+						  <form id="form">
+							<td>
+							  <div class="form-group">
+								<input type="task" class="form-control new-task" placeholder="הוסף משימה">
+							  </div>
+							  <div class="form-group">
+								<button id="new-task-button" type="submit" class="btn btn-add-task btn-warning btn-block"><i id="plus-icon" class="fa fa-plus"></i></button>
+							  </div>
+						  </td>
+						  </form>
+						</tr>
+					  </tbody>
+					  <tfoot>
+						<tr>
+						</tr>
+					  </tfoot>
+					</table>
+					<div id="duplicate-msg" class="alert alert-danger" role="alert">
+					  <p>You've already entered this.</p>
+					</div>
+					<div id="empty-msg"class="alert alert-danger" role="alert">
+					<p>אנא הכנס משימה חדשה</p>
+					</div>
+				  </div>
+				</div>
+			  </div> 
           </div>
+		  
         </div> <!-- panel panel-primary -->
       </div> <!-- col-md-9 -->
 	  
 	  
 	  
 	  
-<!--       <div class="col-md-3">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">הוסף משימה</h3>
-          </div>
-          <div class="panel-body">
-            <table class="table table-striped">
-              <tbody>
-                <tr>
-                  <form id="form">
-                    <td>
-                      <div class="form-group">
-                        <input type="task" class="form-control new-task" placeholder="הוסף משימה">
-                      </div>
-                      <div class="form-group">
-                        <button id="new-task-button" type="submit" class="btn btn-add-task btn-warning btn-block"><i id="plus-icon" class="fa fa-plus"></i></button>
-                      </div>
-                  </td>
-                  </form>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                </tr>
-              </tfoot>
-            </table>
-            <div id="duplicate-msg" class="alert alert-danger" role="alert">
-              <p>You've already entered this.</p>
-            </div>
-            <div id="empty-msg"class="alert alert-danger" role="alert">
-            <p>אנא הכנס משימה חדשה</p>
-            </div>
-          </div>
-        </div>
-      </div> 
-	   -->
+	  
 	  
 	 
     </div> <!-- end row -->

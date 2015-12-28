@@ -13,10 +13,23 @@ $(document).ready(function() {
 
     //setCalander();
 
-  $('#datepicker').datepicker({
-      format: "dd/mm/yyyy"
-  });
-  var checklistName = "sky";
+	// Facebook comments
+	 // $.ajaxSetup({ cache: true });
+	  // $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+		// FB.init({
+		  // appId: '158703717489113',
+		  // version: 'v2.5' // or v2.0, v2.1, v2.2, v2.3
+		// });     
+		// $('#loginbutton,#feedbutton').removeAttr('disabled');
+		// FB.getLoginStatus(updateStatusCallback);
+	  // });
+	
+	
+	$(".new-date").datepicker({dateFormat: 'dd/mm/yy'});
+
+
+  
+  var checklistName = "ski";
 
   var userID = localStorage.getItem("user_id");
   if (!userID) {
@@ -41,7 +54,7 @@ $(document).ready(function() {
       $(".btn-success").parent().parent().css("success");
   }
 
-  var data = [{ id: '', title: 'הכנה', date: '', level: 0 },
+ var data = [{ id: '', title: 'הכנה', date: '', level: 0 },
 { id: '1', title: 'לארגן רשימה של חברים', date: '120', level: 1 },
 { id: '2', title: 'החלטה על מועד החופשה', date: '120', level: 1 },
 { id: '', title: 'הזמנה', date: '', level: 0 },
@@ -91,6 +104,42 @@ $(document).ready(function() {
 { id: '24', title: 'אופציה להשכיר באתר', date: '0', level: 1 },
 { id: '42', title: 'אלכוהול - דיוטי פרי', date: '0', level: 1 }, ]
 
+var loadCachedTasks = function () {
+
+      var jsonStr = localStorage.getItem("custom_tasks" + checklistName);
+	  var obj = JSON.parse(jsonStr);
+	  
+	  return obj;
+  }
+  
+  var addToCachedTasks = function (inputTitle) {
+
+      // Get the current tasks
+	  var currTasks = loadCachedTasks();
+	  
+	  if (!currTasks)
+		  currTasks = [];
+	  // Add the given Tasks
+	  var item = {
+        "id": 'custom_' + (Math.floor(Math.random() * 1000000) + 1),
+		"title": inputTitle,
+        "date": '0',
+		"level": 1
+    };
+	  currTasks.push(item);
+	  jsonStr = JSON.stringify(currTasks);
+	  
+	  // Save to local storage
+	 localStorage.setItem("custom_tasks" + checklistName, jsonStr);
+  }
+  
+
+ var savedCustomTasks = loadCachedTasks();
+ if (savedCustomTasks) {
+	   var data = data.concat(savedCustomTasks);
+	   //data = JSON.stringify(finalList);
+ }
+
   //var data = [{
   //    id: "1", // Unique ID; timestamp is used here
   //    title: "משימה ראשונה", // Title of the task
@@ -121,11 +170,14 @@ $(document).ready(function() {
   var targetDate;
   if (targetDateString) {
       targetDate = new Date(parseFloat(targetDateString));
-      $("#datepicker").val(targetDate.getMonth() + 1 + "/" + targetDate.getDate() + "/" + targetDate.getFullYear());
+      $("#datepicker").val(targetDate.getDate() + "/" + (targetDate.getMonth() + 1) + "/" + targetDate.getFullYear());
 
       //$("#datepicker").setDate(targetDate);
   }
 
+  // Load the datafrom cache if any tasks added
+  
+  
   var r = new Array(), j = -1;
   for (var key = 0, size = data.length; key < size; key++) {
 
@@ -189,8 +241,8 @@ $(document).ready(function() {
 
   var isDateValid = function (text) {
       var comp = text.split('/');
-      var m = parseInt(comp[0], 10);
-      var d = parseInt(comp[1], 10);
+      var d = parseInt(comp[0], 10);
+      var m = parseInt(comp[1], 10);
       var y = parseInt(comp[2], 10);
       var date = new Date(y, m - 1, d);
       if (!(date.getFullYear() == y && date.getMonth() + 1 == m && date.getDate() == d))
@@ -271,7 +323,8 @@ $(document).ready(function() {
     };
 
     mixpanel.track("Add Task Done", { "title": $(".new-task").val() });
-
+	addToCachedTasks($(".new-task").val())
+	
     // Inserts new row with new task item
     var newRow = $("<tr>");
     var wordTd = $("<td>").addClass("word-td vert-align").attr("style", "padding-right:2em").append(newTask);
@@ -336,3 +389,5 @@ $(document).ready(function() {
 
 
 });
+
+  
