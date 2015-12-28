@@ -248,6 +248,14 @@ fieldset[disabled] .btn-google-plus.active {
   border-color: #c53727;
 }
 
+.column_header {
+	font-size: 14px;
+}
+
+.main-task-title {
+	font-size: 14px;
+}
+
 .new-date {
 	width:100%
 }
@@ -294,3 +302,7 @@ fieldset[disabled] .btn-email.active {
   border-color: #2181cf;
 }
 
+a {
+  background-color: transparent;
+  color: #37a3eb;
+}

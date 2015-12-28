@@ -176,7 +176,7 @@ var loadCachedTasks = function () {
   if (targetDateString) {
       targetDate = new Date(parseFloat(targetDateString));
       $("#datepicker").val(targetDate.getDate() + "/" + (targetDate.getMonth() + 1) + "/" + targetDate.getFullYear());
-
+$(".date_column")[0].innerText = "דד-ליין";
       //$("#datepicker").setDate(targetDate);
   }
 
@@ -187,7 +187,7 @@ var loadCachedTasks = function () {
   for (var key = 0, size = data.length; key < size; key++) {
 
       if (data[key].level == 0) {
-          r[++j] = '<tr><td class=\"task word-td\" style="padding-top:1em;padding-bottom:1em"><b><u>';
+          r[++j] = '<tr><td class=\"task word-td main-task-title \" style="padding-top:1em;padding-bottom:1em"><b><u>';
           r[++j] = data[key]['title'];
           r[++j] = '</td></b></u><td></td><td></td></tr>';
       }
@@ -268,6 +268,8 @@ var loadCachedTasks = function () {
           result.setDate(targetDate.getDate() - $(days[i]).data("value"));
           days[i].textContent = result.getDate() + "/" + result.getMonth() + "/" + result.getFullYear();
       }
+	  
+	  $(".date_column")[0].innerText = "דד-ליין";
   }
 
     // Set Date
