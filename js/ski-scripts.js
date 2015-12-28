@@ -67,7 +67,7 @@ $(document).ready(function() {
 { id: '', title: 'להשיג ציוד סקי..', date: '', level: 0 },
 { id: '12', title: 'חליפה - מכנס', date: '28', level: 1 },
 { id: '13', title: 'חליפה - מעיל', date: '28', level: 1 },
-{ id: '20', title: 'ציוד גלישה: בורד+נעליים / מגלשי סקי + מקלות', date: '28', level: 1 },
+{ id: '20', title: 'בורד+נעליים / מגלשי סקי + מקלות', date: '28', level: 1 },
 { id: '14', title: 'כפפות', date: '14', level: 1 },
 { id: '15', title: 'קסדה לסנובורד', date: '14', level: 1 },
 { id: '16', title: 'ביגוד תרמי', date: '14', level: 1 },
@@ -101,7 +101,6 @@ $(document).ready(function() {
 { id: '41', title: 'חטיפי אנרגיה, שוקלד', date: '2', level: 1 },
 { id: '', title: 'הזמנת מונית לשדה תעופה', date: '', level: 0 },
 { id: '43', title: 'הזמנת מונית לשדה תעופה', date: '1', level: 1 },
-{ id: '24', title: 'אופציה להשכיר באתר', date: '0', level: 1 },
 { id: '42', title: 'אלכוהול - דיוטי פרי', date: '0', level: 1 }, ]
 
 var loadCachedTasks = function () {
