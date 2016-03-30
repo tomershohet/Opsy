@@ -1,2 +1,4 @@
-# todo-list
-Todo List  Using Bootstrap CSS, jQuery and everything you know about life, create a Todo List! Your Todo List app will have two main columns (up to you how to format them). Each “todo” should be in a list with the following items: Todo Title Delete button Checkbox  Clicking the checkbox will draw a line through the title and remove the “checkbox” for that row. Clicking “Delete” will delete the item altogether. In the other column, have a form for inputting a new “Todo” which gets added to the list.
+# Kitrict
+You don't have to learn it all...
+By using a Kitrict kit, you can start with actions rather than learning the task at hand and planning it out.
+No need to be an expert at a one-time task
